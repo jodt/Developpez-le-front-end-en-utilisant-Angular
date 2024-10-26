@@ -19,19 +19,11 @@
   </div>
   <div *ngIf="!(error$ | async)">
     <div *ngIf="medalPerCountry$ | async as medalPerCountry">
-      <ngx-charts-pie-chart
-        class="chart"
+      <app-pie-chart
         *ngIf="medalPerCountry.length > 0; else message"
-        [view]="[400, 400]"
-        [results]="medalPerCountry$ | async"
-        [labels]="true"
-        [trimLabels]="false"
+        [chartData]="medalPerCountry"
       >
-        <ng-template #tooltipTemplate class=".custom-tooltip" let-model="model">
-          <div>{{ model.name }}</div>
-          <div>{{ "🏅" + model.value }}</div>
-        </ng-template>
-      </ngx-charts-pie-chart>
+      </app-pie-chart>
       <ng-template #message>Aucune donnée à afficher</ng-template>
     </div>
   </div>
