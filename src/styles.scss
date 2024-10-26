@@ -1,1 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
+
+/*Import police*/
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@300;400;600&family=Montserrat:wght@100;400;600;700;800&display=swap');
+
+/*Define variable*/
+:root {
+    --blue-color: rgb(29,129,141);
+    --label-size: 20px
+}
+
+html {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family:'Montserrat', sans-serif;
+    font-weight: 300;
+}
+
+@media (max-width: 768px) {
+
+    :root {
+      --label-size: 12px
+    }
+
+    .info {
+      font-size: 12px;
+    }
+
+    .title {
+      font-size: 10px;
+    }
+     
+  }

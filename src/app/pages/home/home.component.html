@@ -1,3 +1,38 @@
-<h2>Olympic games app</h2>
+<!--h2>Olympic games app</h2>
 <hr />
-<p>{{ (olympics$ | async)?.length }} data loaded</p>
+<p>{{ (olympics$ | async)?.length }} data loaded</p-->
+
+<div class="general-info">
+  <div class="title">Medals per Country</div>
+  <div class="secondary-info">
+    <div class="info">
+      <div>Number of JOs</div>
+      <div>{{ numberOfJos$ | async }}</div>
+    </div>
+    <div class="info">
+      <div>Number of Country</div>
+      <div>{{ numberOfCountry$ | async }}</div>
+    </div>
+  </div>
+  <div *ngIf="error$ | async as error">
+    {{ error }}
+  </div>
+  <div *ngIf="!(error$ | async)">
+    <div *ngIf="medalPerCountry$ | async as medalPerCountry">
+      <ngx-charts-pie-chart
+        class="chart"
+        *ngIf="medalPerCountry.length > 0; else message"
+        [view]="[400, 400]"
+        [results]="medalPerCountry$ | async"
+        [labels]="true"
+        [trimLabels]="false"
+      >
+        <ng-template #tooltipTemplate class=".custom-tooltip" let-model="model">
+          <div>{{ model.name }}</div>
+          <div>{{ "🏅" + model.value }}</div>
+        </ng-template>
+      </ngx-charts-pie-chart>
+      <ng-template #message>Aucune donnée à afficher</ng-template>
+    </div>
+  </div>
+</div>

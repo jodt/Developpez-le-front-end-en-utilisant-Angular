@@ -1,0 +1,54 @@
+.title {
+    font-size: 30px;
+    border-radius: 5px;
+    padding: 10px 20px;
+    width: fit-content;
+    background-color: var(--blue-color);
+    color: white;
+}
+
+.general-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.secondary-info {
+    display: flex;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5px;
+    margin: 15px;
+    padding: 10px 20px;
+    width: fit-content;
+    border: solid 2px var(--blue-color);
+}
+
+::ng-deep ngx-charts-pie-chart .pie-label {
+    font-size: var(--label-size) !important;
+    color: black;
+    display: var(--label-display);
+}
+
+::ng-deep ngx-charts-pie-chart .pie-label-line {
+    display: var(--label-display);
+}
+
+::ng-deep ngx-tooltip-content.ngx-charts-tooltip-content.type-tooltip {
+    background-color: var(--blue-color) !important;
+    padding: 10px;
+}
+
+@media (max-width: 768px) {
+
+    .title {
+      font-size: 20px;
+    }
+     
+  }
