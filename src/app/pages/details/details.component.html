@@ -1,0 +1,30 @@
+<div class="general-info">
+  <div class="title">{{ countryName }}</div>
+  <div class="secondary-info">
+    <div class="info">
+      <div>Number of entries</div>
+      <div>{{ totalEntries$ | async }}</div>
+    </div>
+    <div class="info">
+      <div>Total number medals</div>
+      <div>{{ totalmedals$ | async }}</div>
+    </div>
+    <div class="info">
+      <div>Total number of athletes</div>
+      <div>{{ totalAthletes$ | async }}</div>
+    </div>
+  </div>
+  <!--div *ngIf="error$ | async as error">
+      {{ error }}
+    </div>
+    <div *ngIf="!(error$ | async)">
+      <div *ngIf="medalPerCountry$ | async as medalPerCountry">
+        <app-pie-chart
+          *ngIf="medalPerCountry.length > 0; else message"
+          [chartData]="medalPerCountry"
+        >
+        </app-pie-chart>
+        <ng-template #message>Aucune donnée à afficher</ng-template>
+      </div>
+    </div-->
+</div>
