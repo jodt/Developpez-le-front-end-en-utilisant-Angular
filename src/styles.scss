@@ -9,17 +9,18 @@
     --label-size: 20px
 }
 
-html {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    font-family:'Montserrat', sans-serif;
-    font-weight: 300;
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-family:'Montserrat', sans-serif;
+  font-weight: 300;
 }
 
 @media (max-width: 768px) {
-
     :root {
       --label-size: 12px
     }
