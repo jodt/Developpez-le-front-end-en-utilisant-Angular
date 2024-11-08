@@ -1,9 +1,9 @@
 <ngx-charts-pie-chart
   class="chart"
-  [view]="[400, 400]"
   [results]="chartData"
   [labels]="true"
   [trimLabels]="false"
+  (select)="onSelect($event)"
 >
   <ng-template #tooltipTemplate class=".custom-tooltip" let-model="model">
     <div>{{ model.name }}</div>
