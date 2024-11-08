@@ -1,4 +1,4 @@
-export interface MedalPerCounrty {
+export interface ChartData {
     name: string,
     value: number,
 }

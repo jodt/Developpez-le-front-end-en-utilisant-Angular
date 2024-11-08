@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, of, take } from 'rxjs';
-import { MedalPerCounrty } from 'src/app/core/models/MedalPerCountry';
-import { OlympicCountry } from 'src/app/core/models/Olympic';
+import { ChartData } from 'src/app/core/models/ChartData';
 import { OlympicService } from 'src/app/core/services/olympic.service';
 
 @Component({
@@ -11,7 +10,7 @@ import { OlympicService } from 'src/app/core/services/olympic.service';
 })
 export class HomeComponent implements OnInit {
   //public olympics$: Observable<OlympicCountry[] | undefined> = of(undefined);
-  public medalPerCountry$!: Observable<MedalPerCounrty[]>;
+  public medalPerCountry$!: Observable<ChartData[]>;
   public numberOfJos$!: Observable<number>;
   public numberOfCountry$!: Observable<number>;
   public error$!: Observable<string | null>;

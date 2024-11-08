@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { MedalPerCounrty } from 'src/app/core/models/MedalPerCountry';
+import { Router } from '@angular/router';
+import { ChartData } from 'src/app/core/models/ChartData';
 
 @Component({
   selector: 'app-pie-chart',
@@ -8,6 +9,12 @@ import { MedalPerCounrty } from 'src/app/core/models/MedalPerCountry';
 })
 export class PieChartComponent {
 
-  @Input() chartData! : MedalPerCounrty[];
+  constructor(private router: Router){}
+
+  @Input() chartData! : ChartData[];
+
+  onSelect(event : ChartData) {
+    this.router.navigate(['/details', event.name])
+  }
 
 }
