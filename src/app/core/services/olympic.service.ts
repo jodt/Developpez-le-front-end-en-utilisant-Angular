@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, EMPTY, Observable, Subject, of } from 'rxjs';
+import { BehaviorSubject, EMPTY, Observable, Subject, of, partition } from 'rxjs';
 import { catchError, filter, map, tap } from 'rxjs/operators';
 import { OlympicCountry } from '../models/Olympic';
-import { MedalPerCounrty } from '../models/MedalPerCountry';
+import { ChartData } from '../models/ChartData';
+import { Participation } from '../models/Participation';
 
 @Injectable({
   providedIn: 'root',
@@ -33,7 +34,7 @@ export class OlympicService {
     return this.olympics$.asObservable();
   }
 
-  getMedalPerCountry() : Observable<MedalPerCounrty[]> {
+  getMedalPerCountry() : Observable<ChartData[]> {
     return this.getOlympics().pipe(
       map(olympicCountries => olympicCountries?.map(country => ({
         name: country.country,
@@ -64,4 +65,31 @@ export class OlympicService {
     return this.error$.asObservable();
   }
 
+  getOlympicCountryByName(name : string) : Observable<OlympicCountry | undefined> {
+    return this.getOlympics().pipe(
+      map(olympicCountries => 
+        olympicCountries.find((olympicCountry) => olympicCountry.country === name)
+      )
+    )
+  }
+
+  getParticipations(name: string): Observable<Participation[]>{
+    return this.getOlympicCountryByName(name).pipe(
+      map( country => country?.participations ?? [])
+    )
+  }
+
+  getMedals(name:string) : Observable<number> {
+    let participations: Observable<Participation[]> = this.getParticipations(name);
+    return participations.pipe(map(
+      participation => participation?.reduce((total,participation) => total + participation.medalsCount,0) || 0
+    ))
+  }
+
+  getAthletes(name:string) : Observable<number> {
+    let participations: Observable<Participation[]> = this.getParticipations(name);
+    return participations.pipe(map(
+      participation => participation?.reduce((total,participation) => total + participation.athleteCount,0) || 0
+    ))
+  }
 }
