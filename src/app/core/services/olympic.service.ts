@@ -31,6 +31,7 @@ export class OlympicService {
         this.error$.next("Il semble y avoir une erreur lors de la récupération des données")
         // can be useful to end loading state and let the user know something went wrong
         this.olympics$.next([]);
+        this.isLoading$.next(false);
         return of([]);
       })
     );
