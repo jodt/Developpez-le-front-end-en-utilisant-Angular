@@ -16,15 +16,15 @@
   </div>
   <!--div *ngIf="error$ | async as error">
       {{ error }}
-    </div>
-    <div *ngIf="!(error$ | async)">
-      <div *ngIf="medalPerCountry$ | async as medalPerCountry">
-        <app-pie-chart
-          *ngIf="medalPerCountry.length > 0; else message"
-          [chartData]="medalPerCountry"
-        >
-        </app-pie-chart>
-        <ng-template #message>Aucune donnée à afficher</ng-template>
-      </div>
     </div-->
+  <div>
+    <div *ngIf="medalsByParticipation$ | async as medalsByParticipation">
+      <app-line-chart
+        *ngIf="medalsByParticipation[0].series.length > 0; else message"
+        [lineChartData]="medalsByParticipation"
+      >
+      </app-line-chart>
+      <ng-template #message>Aucune donnée à afficher</ng-template>
+    </div>
+  </div>
 </div>

@@ -1,10 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, EMPTY, Observable, Subject, of, partition } from 'rxjs';
-import { catchError, filter, map, tap } from 'rxjs/operators';
+import { BehaviorSubject, Observable, of } from 'rxjs';
+import { catchError, delay, map, tap } from 'rxjs/operators';
 import { OlympicCountry } from '../models/Olympic';
 import { ChartData } from '../models/ChartData';
 import { Participation } from '../models/Participation';
+import { LineChartData } from '../models/LineChartData';
 
 @Injectable({
   providedIn: 'root',
@@ -80,16 +81,32 @@ export class OlympicService {
   }
 
   getMedals(name:string) : Observable<number> {
-    let participations: Observable<Participation[]> = this.getParticipations(name);
-    return participations.pipe(map(
+    let participations$: Observable<Participation[]> = this.getParticipations(name);
+    return participations$.pipe(map(
       participation => participation?.reduce((total,participation) => total + participation.medalsCount,0) || 0
     ))
   }
 
   getAthletes(name:string) : Observable<number> {
-    let participations: Observable<Participation[]> = this.getParticipations(name);
-    return participations.pipe(map(
+    let participations$: Observable<Participation[]> = this.getParticipations(name);
+    return participations$.pipe(map(
       participation => participation?.reduce((total,participation) => total + participation.athleteCount,0) || 0
     ))
+  }
+
+  getmedalsByParticipation(name: string): Observable<LineChartData[]> {
+    let participations$: Observable<Participation[]> = this.getParticipations(name);
+    return participations$.pipe(
+      map(participations$ => {
+        let medalsByParticipation: LineChartData = {
+          name:name,
+          series: participations$.map(participation => ({
+            name:participation.year.toString(),
+            value: participation.medalsCount
+          }))
+        };
+        return Array(medalsByParticipation)
+      })
+    )
   }
 }

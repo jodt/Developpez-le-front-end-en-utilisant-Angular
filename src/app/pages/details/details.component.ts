@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { map, Observable, take, tap } from 'rxjs';
+import { LineChartData } from 'src/app/core/models/LineChartData';
 import { OlympicCountry } from 'src/app/core/models/Olympic';
 import { OlympicService } from 'src/app/core/services/olympic.service';
 
@@ -16,12 +17,13 @@ export class DetailsComponent implements OnInit{
   public totalmedals$!: Observable<number>
   public totalAthletes$!: Observable<number>
   public totalEntries$!: Observable<number>
+  public medalsByParticipation$!: Observable<LineChartData[]>
 
   constructor(private route : ActivatedRoute, private olympicService : OlympicService){}
 
   ngOnInit(): void {
     this.getCounrtyNameFromRoute();
-    this.initaData();
+    this.initData();
   }
 
   private getCounrtyNameFromRoute(){
@@ -32,9 +34,10 @@ export class DetailsComponent implements OnInit{
     .subscribe(params => this.countryName = params['countryName'])
   }
 
-  private initaData(){
+  private initData(){
     this.totalmedals$ = this.olympicService.getMedals(this.countryName);
     this.totalAthletes$ = this.olympicService.getAthletes(this.countryName);
     this.totalEntries$ = this.olympicService.getParticipations(this.countryName).pipe(map(participations => participations.length));
+    this.medalsByParticipation$ = this.olympicService.getmedalsByParticipation(this.countryName);
   }
 }
