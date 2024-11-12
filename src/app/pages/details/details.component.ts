@@ -18,6 +18,8 @@ export class DetailsComponent implements OnInit{
   public totalAthletes$!: Observable<number>
   public totalEntries$!: Observable<number>
   public medalsByParticipation$!: Observable<LineChartData[]>
+  public error$!: Observable<string | null>;
+  public isLoading$! : Observable<boolean>;
 
   constructor(private route : ActivatedRoute, private olympicService : OlympicService){}
 
@@ -39,5 +41,7 @@ export class DetailsComponent implements OnInit{
     this.totalAthletes$ = this.olympicService.getAthletes(this.countryName);
     this.totalEntries$ = this.olympicService.getParticipations(this.countryName).pipe(map(participations => participations.length));
     this.medalsByParticipation$ = this.olympicService.getmedalsByParticipation(this.countryName);
+    this.error$ = this.olympicService.getError();
+    this.isLoading$ = this.olympicService.getLoadindStatus();
   }
 }
