@@ -14,12 +14,17 @@ export class OlympicService {
   private olympicUrl = './assets/mock/olympic.json';
   private olympics$ = new BehaviorSubject<OlympicCountry[]>([]);
   private error$ = new BehaviorSubject<string | null>(null);
+  private isLoading$ = new BehaviorSubject<boolean>(true);
 
   constructor(private http: HttpClient) {}
 
   loadInitialData() {
     return this.http.get<OlympicCountry[]>(this.olympicUrl).pipe(
-      tap((value) => this.olympics$.next(value)),
+      delay(1000),
+      tap((value) => 
+        {this.olympics$.next(value);
+          this.isLoading$.next(false);
+        }),
       catchError((error) => {
         // TODO: improve error handling
         console.error(error);
@@ -65,6 +70,11 @@ export class OlympicService {
   getError() : Observable<string | null> {
     return this.error$.asObservable();
   }
+
+  getLoadindStatus() : Observable<boolean> {
+    return this.isLoading$.asObservable();
+  }
+
 
   getOlympicCountryByName(name : string) : Observable<OlympicCountry | undefined> {
     return this.getOlympics().pipe(

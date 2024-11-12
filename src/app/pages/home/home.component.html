@@ -17,7 +17,13 @@
   <div *ngIf="error$ | async as error">
     {{ error }}
   </div>
-  <div *ngIf="!(error$ | async)">
+  <div class="loader" *ngIf="isLoading$ | async">
+    Chargement en cours
+    <span class="dot d1"></span>
+    <span class="dot d2"></span>
+    <span class="dot d3"></span>
+  </div>
+  <div *ngIf="!(error$ | async) && !(isLoading$ | async)">
     <div *ngIf="medalPerCountry$ | async as medalPerCountry">
       <app-pie-chart
         *ngIf="medalPerCountry.length > 0; else message"

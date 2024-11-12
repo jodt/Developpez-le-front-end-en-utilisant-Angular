@@ -20,6 +20,49 @@ body {
   font-weight: 300;
 }
 
+/*---------LOADER-----------*/
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  color: var(--blue-color);
+  padding: 50px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+
+}
+
+.dot {
+  width: 20px;
+  height: 20px;
+  background-color: var(--blue-color);
+  border-radius: 50%;
+  animation: animate 0.3s infinite alternate;
+}
+
+.d2 {
+  animation-delay: 0.05s;
+}
+
+.d3 {
+  animation-delay: 0.1s;
+}
+@keyframes animate {
+  0% {
+      opacity: 0;
+  }
+  50% {
+      opacity: 0.5;
+  }
+  100% {
+      opacity: 1;
+  }
+}
+
+
+
 @media (max-width: 768px) {
     :root {
       --label-size: 12px

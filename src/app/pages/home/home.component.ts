@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
   public numberOfJos$!: Observable<number>;
   public numberOfCountry$!: Observable<number>;
   public error$!: Observable<string | null>;
+  public isLoading$!: Observable<boolean>;
 
 
   constructor(private olympicService: OlympicService) {}
@@ -24,6 +25,7 @@ export class HomeComponent implements OnInit {
     this.numberOfCountry$ = this.olympicService.getTotalCountries();
     this.numberOfJos$ = this.olympicService.getNumberOfJos();
     this.error$ = this.olympicService.getError();
+    this.isLoading$ = this.olympicService.getLoadindStatus();
   }
   
 }
