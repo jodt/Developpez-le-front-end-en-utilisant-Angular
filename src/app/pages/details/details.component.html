@@ -3,15 +3,15 @@
   <div class="secondary-info">
     <div class="info">
       <div>Number of entries</div>
-      <div>{{ totalEntries$ | async }}</div>
+      <div class="bold">{{ totalEntries$ | async }}</div>
     </div>
     <div class="info">
       <div>Total number medals</div>
-      <div>{{ totalmedals$ | async }}</div>
+      <div class="bold">{{ totalmedals$ | async }}</div>
     </div>
     <div class="info">
       <div>Total number of athletes</div>
-      <div>{{ totalAthletes$ | async }}</div>
+      <div class="bold">{{ totalAthletes$ | async }}</div>
     </div>
   </div>
   <div *ngIf="error$ | async as error">
@@ -24,7 +24,10 @@
     <span class="dot d3"></span>
   </div>
   <div *ngIf="!(error$ | async) && !(isLoading$ | async)">
-    <div *ngIf="medalsByParticipation$ | async as medalsByParticipation">
+    <div
+      *ngIf="medalsByParticipation$ | async as medalsByParticipation"
+      class="chart"
+    >
       <app-line-chart
         *ngIf="medalsByParticipation[0].series.length > 0; else message"
         [lineChartData]="medalsByParticipation"

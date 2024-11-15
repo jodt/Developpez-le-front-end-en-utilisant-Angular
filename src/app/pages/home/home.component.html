@@ -7,11 +7,11 @@
   <div class="secondary-info">
     <div class="info">
       <div>Number of JOs</div>
-      <div>{{ numberOfJos$ | async }}</div>
+      <div class="bold">{{ numberOfJos$ | async }}</div>
     </div>
     <div class="info">
       <div>Number of Country</div>
-      <div>{{ numberOfCountry$ | async }}</div>
+      <div class="bold">{{ numberOfCountry$ | async }}</div>
     </div>
   </div>
   <div *ngIf="error$ | async as error">
@@ -24,7 +24,7 @@
     <span class="dot d3"></span>
   </div>
   <div *ngIf="!(error$ | async) && !(isLoading$ | async)">
-    <div *ngIf="medalPerCountry$ | async as medalPerCountry">
+    <div *ngIf="medalPerCountry$ | async as medalPerCountry" class="chart">
       <app-pie-chart
         *ngIf="medalPerCountry.length > 0; else message"
         [chartData]="medalPerCountry"

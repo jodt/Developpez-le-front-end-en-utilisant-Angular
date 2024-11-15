@@ -9,15 +9,53 @@
     --label-size: 20px
 }
 
-body {
+html, body {
   margin: 0;
   padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  font-family:'Montserrat', sans-serif;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 300;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.title {
+  font-size: 30px;
+  border-radius: 5px;
+  padding: 10px 20px;
+  width: fit-content;
+  background-color: var(--blue-color);
+  color: white;
+}
+
+.general-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.secondary-info {
+  display: flex;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 5px;
+  margin: 15px;
+  padding: 10px 20px;
+  width: fit-content;
+  border: solid 2px var(--blue-color);
+}
+
+.bold {
+  font-weight: bold;
 }
 
 /*---------LOADER-----------*/
@@ -35,8 +73,8 @@ body {
 }
 
 .dot {
-  width: 20px;
-  height: 20px;
+  width: 15px;
+  height: 15px;
   background-color: var(--blue-color);
   border-radius: 50%;
   animation: animate 0.3s infinite alternate;
@@ -63,17 +101,34 @@ body {
 
 
 
+
+/*---------RESPONSIVE-----------*/
 @media (max-width: 768px) {
     :root {
       --label-size: 12px
     }
 
-    .info {
-      font-size: 12px;
+    .title {
+      font-size: 20px;
     }
 
-    .title {
-      font-size: 10px;
+    .info {
+      font-size: 12px;
+      margin: 5px;
     }
-     
+    .secondary-info {
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    .loader{
+      font-size: 20px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+    }
+
   }
