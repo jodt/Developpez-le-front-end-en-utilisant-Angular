@@ -1,17 +1,17 @@
-<div class="general-info">
+<div class="statistics-page">
   <div class="title">{{ countryName }}</div>
-  <div class="secondary-info">
-    <div class="info">
+  <div class="stats-list">
+    <div class="stat-item">
       <div>Number of entries</div>
-      <div class="bold">{{ totalEntries$ | async }}</div>
+      <div class="stat-value">{{ totalEntries$ | async }}</div>
     </div>
-    <div class="info">
+    <div class="stat-item">
       <div>Total number medals</div>
-      <div class="bold">{{ totalmedals$ | async }}</div>
+      <div class="stat-value">{{ totalmedals$ | async }}</div>
     </div>
-    <div class="info">
+    <div class="stat-item">
       <div>Total number of athletes</div>
-      <div class="bold">{{ totalAthletes$ | async }}</div>
+      <div class="stat-value">{{ totalAthletes$ | async }}</div>
     </div>
   </div>
   <div *ngIf="error$ | async as error">

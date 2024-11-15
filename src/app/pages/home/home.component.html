@@ -2,16 +2,16 @@
 <hr />
 <p>{{ (olympics$ | async)?.length }} data loaded</p-->
 
-<div class="general-info">
+<div class="statistics-page">
   <div class="title">Medals per Country</div>
-  <div class="secondary-info">
-    <div class="info">
+  <div class="stats-list">
+    <div class="stat-item">
       <div>Number of JOs</div>
-      <div class="bold">{{ numberOfJos$ | async }}</div>
+      <div class="stat-value">{{ numberOfJos$ | async }}</div>
     </div>
-    <div class="info">
+    <div class="stat-item">
       <div>Number of Country</div>
-      <div class="bold">{{ numberOfCountry$ | async }}</div>
+      <div class="stat-value">{{ numberOfCountry$ | async }}</div>
     </div>
   </div>
   <div *ngIf="error$ | async as error">
