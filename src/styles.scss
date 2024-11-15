@@ -1,9 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 
-/*Import police*/
+/*---------IMPORT POLICE-----------*/
 @import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@300;400;600&family=Montserrat:wght@100;400;600;700;800&display=swap');
 
-/*Define variable*/
+/*---------DEFINE VARIABLE-----------*/
 :root {
     --blue-color: rgb(29,129,141);
     --label-size: 20px
@@ -56,6 +56,14 @@ html, body {
 
 .stat-value {
   font-weight: bold;
+}
+
+a {
+  text-decoration: none;
+}
+
+.icon-link{
+  display: none;
 }
 
 /*---------LOADER-----------*/
@@ -115,6 +123,7 @@ html, body {
     .stat-item {
       font-size: 12px;
       margin: 5px;
+      padding: 5px;
     }
     .stats-list {
       flex-direction: column;
@@ -131,4 +140,5 @@ html, body {
       height: 10px;
     }
 
+    
   }
