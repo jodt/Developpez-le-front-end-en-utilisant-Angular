@@ -1,4 +1,5 @@
-<div class="statistics-page">
+<app-loader class="loader" *ngIf="isLoading"></app-loader>
+<div class="statistics-page" *ngIf="!isLoading">
   <div class="title">{{ countryName }}</div>
   <div class="stats-list">
     <div class="stat-item">
@@ -14,27 +15,14 @@
       <div class="stat-value">{{ totalAthletes$ | async }}</div>
     </div>
   </div>
-  <div *ngIf="error$ | async as error">
-    {{ error }}
-  </div>
-  <app-loader class="loader" *ngIf="isLoading$ | async"></app-loader>
-  <div *ngIf="!(error$ | async) && !(isLoading$ | async)">
-    <div
-      *ngIf="medalsByParticipation$ | async as medalsByParticipation"
-      class="chart"
-    >
-      <app-line-chart
-        *ngIf="medalsByParticipation[0].series.length > 0; else message"
-        [lineChartData]="medalsByParticipation"
-      >
-      </app-line-chart>
-      <ng-template #message>Aucune donnée à afficher</ng-template>
-    </div>
+  <div *ngIf="medalsByParticipation$ | async as medalsByParticipation" class="chart">
+    <app-line-chart *ngIf="medalsByParticipation[0].series.length > 0; else message"
+      [lineChartData]="medalsByParticipation">
+    </app-line-chart>
+    <ng-template #message>Aucune donnée à afficher</ng-template>
   </div>
   <a routerLink="" class="home-link">
     <span class="text-link">Retour à l'accueil</span>
-    <span class="icon-link"
-      ><i class="fa-solid fa-arrow-left" aria-hidden="true"></i
-    ></span>
+    <span class="icon-link"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i></span>
   </a>
 </div>
