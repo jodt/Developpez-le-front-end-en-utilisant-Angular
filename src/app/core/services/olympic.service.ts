@@ -20,16 +20,13 @@ export class OlympicService {
 
   loadInitialData() {
     return this.http.get<OlympicCountry[]>(this.olympicUrl).pipe(
-      delay(1000),
+      delay(2000),
       tap((value) => 
         {this.olympics$.next(value);
           this.isLoading$.next(false);
         }),
       catchError((error) => {
-        // TODO: improve error handling
-        console.error(error);
         this.error$.next("Il semble y avoir une erreur lors de la récupération des données")
-        // can be useful to end loading state and let the user know something went wrong
         this.olympics$.next([]);
         this.isLoading$.next(false);
         return of([]);
@@ -40,22 +37,23 @@ export class OlympicService {
   getOlympics() {
     return this.olympics$.asObservable();
   }
-
+  
   getMedalPerCountry() : Observable<ChartData[]> {
     return this.getOlympics().pipe(
-      map(olympicCountries => olympicCountries?.map(country => ({
+      map(olympicCountries => olympicCountries.map(country => ({
         name: country.country,
         value: country.participations.reduce((total, participation) => total + participation.medalsCount, 0)
-      })) || [])
+      })))
     )
   }
 
   getTotalCountries() : Observable<number> {
     return this.getOlympics().pipe(
-      map(olympicCountries => olympicCountries?.length || 0)
+      map(olympicCountries => olympicCountries.length)
     )
   }
 
+  //todo revoir cette methode pour calculer le nombre de jo
   getNumberOfJos() : Observable<number> {
     return this.getOlympics().pipe(
       map(olympicCountries => {
@@ -67,15 +65,6 @@ export class OlympicService {
       })
     )
   }
-
-  getError() : Observable<string | null> {
-    return this.error$.asObservable();
-  }
-
-  getLoadindStatus() : Observable<boolean> {
-    return this.isLoading$.asObservable();
-  }
-
 
   getOlympicCountryByName(name : string) : Observable<OlympicCountry | undefined> {
     return this.getOlympics().pipe(
@@ -94,24 +83,24 @@ export class OlympicService {
   getMedals(name:string) : Observable<number> {
     let participations$: Observable<Participation[]> = this.getParticipations(name);
     return participations$.pipe(map(
-      participation => participation?.reduce((total,participation) => total + participation.medalsCount,0) || 0
+      participation => participation?.reduce((total,participation) => total + participation.medalsCount,0)
     ))
   }
 
   getAthletes(name:string) : Observable<number> {
     let participations$: Observable<Participation[]> = this.getParticipations(name);
     return participations$.pipe(map(
-      participation => participation?.reduce((total,participation) => total + participation.athleteCount,0) || 0
+      participation => participation?.reduce((total,participation) => total + participation.athleteCount,0)
     ))
   }
 
   getmedalsByParticipation(name: string): Observable<LineChartData[]> {
     let participations$: Observable<Participation[]> = this.getParticipations(name);
     return participations$.pipe(
-      map(participations$ => {
+      map(participations => {
         let medalsByParticipation: LineChartData = {
           name:name,
-          series: participations$.map(participation => ({
+          series: participations.map(participation => ({
             name:participation.year.toString(),
             value: participation.medalsCount
           }))
@@ -119,5 +108,13 @@ export class OlympicService {
         return Array(medalsByParticipation)
       })
     )
+  }
+
+  getError() : Observable<string | null> {
+    return this.error$.asObservable();
+  }
+
+  getLoadindStatus() : Observable<boolean> {
+    return this.isLoading$.asObservable();
   }
 }
