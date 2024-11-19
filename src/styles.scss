@@ -33,6 +33,7 @@ body {
 }
 
 .statistics-page {
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -141,8 +142,13 @@ ngx-tooltip-content.ngx-charts-tooltip-content.type-tooltip {
 
 /* ================ RESPONSIVE ================ */
 @media (max-width: 768px) {
+
   :root {
     --label-size: 12px;
+  }
+
+  .statistics-page {
+    justify-content: space-around;
   }
 
   .title {
@@ -169,4 +175,9 @@ ngx-tooltip-content.ngx-charts-tooltip-content.type-tooltip {
     width: 10px;
     height: 10px;
   }
+
+  .chart {
+    width: 350px;
+  }
+
 }
