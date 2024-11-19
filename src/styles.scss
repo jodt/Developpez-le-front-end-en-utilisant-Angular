@@ -1,9 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 
-/*---------IMPORT POLICE-----------*/
+/* =============== IMPORT POLICE ============== */
 @import url("https://fonts.googleapis.com/css2?family=Epilogue:wght@300;400;600&family=Montserrat:wght@100;400;600;700;800&display=swap");
 
-/*---------DEFINE VARIABLE-----------*/
+
+/* ============= DEFINE VARIABLE ============== */
 :root {
   --blue-color: rgb(29, 129, 141);
   --label-size: 20px;
@@ -65,7 +66,8 @@ a {
   display: none;
 }
 
-/*---------LOADER-----------*/
+
+/* ================== LOADER ================== */
 .loader {
   display: flex;
   align-items: center;
@@ -93,19 +95,51 @@ a {
 .d3 {
   animation-delay: 0.1s;
 }
+
 @keyframes animate {
   0% {
     opacity: 0;
   }
+
   50% {
     opacity: 0.5;
   }
+
   100% {
     opacity: 1;
   }
 }
 
-/*---------RESPONSIVE-----------*/
+
+
+/* ================== CHARTS ================== */
+
+.pie-label {
+  font-size: var(--label-size) !important;
+  color: black;
+  display: var(--label-display);
+}
+
+.pie-label-line {
+  display: var(--label-display);
+}
+
+ngx-tooltip-content.ngx-charts-tooltip-content.type-tooltip {
+  background-color: var(--blue-color) !important;
+  padding: 10px;
+
+  .tooltip-caret.position-top {
+    border-top-color: var(--blue-color);
+  }
+
+  .tooltip-caret.position-right {
+    border-right-color: var(--blue-color);
+  }
+}
+
+
+
+/* ================ RESPONSIVE ================ */
 @media (max-width: 768px) {
   :root {
     --label-size: 12px;
@@ -120,6 +154,7 @@ a {
     margin: 5px;
     padding: 5px;
   }
+
   .stats-list {
     flex-direction: column;
     justify-content: space-around;
