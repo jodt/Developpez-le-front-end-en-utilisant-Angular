@@ -53,15 +53,17 @@ export class OlympicService {
     )
   }
 
-  //todo revoir cette methode pour calculer le nombre de jo
+
   getNumberOfJos() : Observable<number> {
     return this.getOlympics().pipe(
       map(olympicCountries => {
-        if (olympicCountries?.length > 0) {
-          return olympicCountries[0].participations.length
-        } else {
-          return 0;
+        let yearsOfJos = new Set();
+        for (let olympicCountry of olympicCountries) {
+          for (let participation of olympicCountry.participations){
+            yearsOfJos.add(participation.year)
+          }
         }
+        return yearsOfJos.size;
       })
     )
   }
