@@ -9,7 +9,6 @@ import { OlympicService } from 'src/app/core/services/olympic.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  //public olympics$: Observable<OlympicCountry[] | undefined> = of(undefined);
   public medalPerCountry$!: Observable<ChartData[]>;
   public numberOfJos$!: Observable<number>;
   public numberOfCountry$!: Observable<number>;
@@ -20,7 +19,6 @@ export class HomeComponent implements OnInit {
   constructor(private olympicService: OlympicService) {}
 
   ngOnInit(): void {
-    //this.olympics$ = this.olympicService.getOlympics();
     this.medalPerCountry$ = this.olympicService.getMedalPerCountry();
     this.numberOfCountry$ = this.olympicService.getTotalCountries();
     this.numberOfJos$ = this.olympicService.getNumberOfJos();
