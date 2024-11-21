@@ -9,5 +9,7 @@ import { LineChartData } from 'src/app/core/models/LineChartData';
 export class LineChartComponent {
 
   @Input() lineChartData!: LineChartData[];
-
+  @Input() xAxisLabel!: string;
+  @Input() yAxisLabel!: string;
+  
 }

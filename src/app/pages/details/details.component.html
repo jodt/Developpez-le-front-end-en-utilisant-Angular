@@ -17,7 +17,10 @@
   </div>
   <div *ngIf="medalsByParticipation$ | async as medalsByParticipation" class="chart">
     <app-line-chart *ngIf="medalsByParticipation[0].series.length > 0; else message"
-      [lineChartData]="medalsByParticipation">
+      [lineChartData]="medalsByParticipation"
+      [yAxisLabel] = "yAxisLabel"
+      [xAxisLabel] = "xAxisLabel"
+      >
     </app-line-chart>
     <ng-template #message>Aucune donnée à afficher</ng-template>
   </div>

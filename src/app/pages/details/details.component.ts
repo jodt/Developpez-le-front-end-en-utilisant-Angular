@@ -17,6 +17,8 @@ export class DetailsComponent implements OnInit, OnDestroy {
   public totalAthletes$!: Observable<number>;
   public totalEntries$!: Observable<number>;
   public medalsByParticipation$!: Observable<LineChartData[]>;
+  public xAxisLabel: string = "Dates";
+  public yAxisLabel: string = "Number of medals";
   public isLoading: boolean = true;
   private destroy$ = new Subject<boolean>();
 
