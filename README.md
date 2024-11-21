@@ -16,7 +16,7 @@ This project is a single page application built with Angular, designed to presen
 
 ## Using OlympicGames
 
-To use PayMyBuddy, follow these steps:
+To use OlympicGames, follow these steps:
 - Clone the projet
 - Open it in your IDE
 - install dependencies 
