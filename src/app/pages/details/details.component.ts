@@ -33,16 +33,18 @@ export class DetailsComponent implements OnInit, OnDestroy {
     this.initDataOrRedirect();
   }
 
+  
   private getCountryNameFromRoute() {
-    this.countryName = this.route.snapshot.params['countryName'];
+    this.countryName = this.route.snapshot.params['countryName']; //get country name in route
   }
 
+  
   private initDataOrRedirect() {
     this.olympicService.getLoadindStatus()
     .pipe(takeUntil(this.destroy$))
     .subscribe(
       (isloading) => {
-        if (!isloading) {
+        if (!isloading) { //wait for the data to load before continuing
           this.isLoading = false;
           this.initDataIfParticipated();
         }
@@ -50,6 +52,10 @@ export class DetailsComponent implements OnInit, OnDestroy {
     )
   }
 
+  /**
+   * Retrieve the country information if it exists,
+   * otherwise redirect to the not-found page
+   */
   private initDataIfParticipated() {
     this.olympicService.getOlympicCountryByName(this.countryName)
     .pipe(takeUntil(this.destroy$))
