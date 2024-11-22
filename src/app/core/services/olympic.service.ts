@@ -32,7 +32,7 @@ export class OlympicService {
           this.isLoading$.next(false);
         }),
       catchError((error) => {
-        this.error$.next("Il semble y avoir une erreur lors de la récupération des données")
+        this.error$.next("Data loading error. Please try again later")
         this.olympics$.next([]);
         this.isLoading$.next(false);
         return of([]);

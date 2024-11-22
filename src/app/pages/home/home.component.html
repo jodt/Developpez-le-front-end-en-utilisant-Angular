@@ -10,7 +10,7 @@
       <div class="stat-value">{{ numberOfCountry$ | async }}</div>
     </div>
   </div>
-  <div *ngIf="error$ | async as error">
+  <div *ngIf="error$ | async as error" class="error-message">
     {{ error }}
   </div>
   <app-loader *ngIf="isLoading$ | async"></app-loader>
