@@ -1,0 +1,31 @@
+<app-loader class="loader" *ngIf="isLoading"></app-loader>
+<div class="statistics-page" *ngIf="!isLoading">
+  <div class="title">{{ countryName }}</div>
+  <div class="stats-list">
+    <div class="stat-item">
+      <div>Number of entries</div>
+      <div class="stat-value">{{ totalEntries$ | async }}</div>
+    </div>
+    <div class="stat-item">
+      <div>Total number medals</div>
+      <div class="stat-value">{{ totalmedals$ | async }}</div>
+    </div>
+    <div class="stat-item">
+      <div>Total number of athletes</div>
+      <div class="stat-value">{{ totalAthletes$ | async }}</div>
+    </div>
+  </div>
+  <div *ngIf="medalsByParticipation$ | async as medalsByParticipation" class="chart">
+    <app-line-chart *ngIf="medalsByParticipation[0].series.length > 0; else message"
+      [lineChartData]="medalsByParticipation"
+      [yAxisLabel] = "yAxisLabel"
+      [xAxisLabel] = "xAxisLabel"
+      >
+    </app-line-chart>
+    <ng-template #message>No data to display</ng-template>
+  </div>
+  <a routerLink="" class="home-link">
+    <span class="text-link">Back to home</span>
+    <span class="icon-link"><i class="fa-solid fa-house" aria-hidden="true"></i></span>
+  </a>
+</div>

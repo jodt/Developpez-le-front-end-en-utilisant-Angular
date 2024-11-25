@@ -1,29 +1,56 @@
-# OlympicGamesStarter
+# OlympicGames
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.3.
+This project is a single page application built with Angular, designed to present information about countries that have participated in the Olympic Games over the years. The main page displays an overview of the countries, including a pie chart summarizing their participation (total number of medals won across all years). Clicking on a chart section takes the user to a detailed page for that country. The details page provides detailed data on the Olympic history of the selected country, such as total number of medals won and participation statistics.
 
-Don't forget to install your node_modules before starting (`npm install`).
 
-## Development server
+## Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Dashboard with pie chart for general information
+- Details page for information about the chosen country
+- Responsive design
 
-## Build
+## Prerequites
+- Node 20.14.0
+- Angular 18.0.5
+- IDE VS code / Sublime text
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Using OlympicGames
 
-## Where to start
+To use OlympicGames, follow these steps:
+- Clone the projet
+- Open it in your IDE
+- install dependencies 
+    ```
+    npm install
+    ```
+- start the development server
+    ```
+    ng serve
+    ```
+- Open your browser and navigate to:
+    ```
+    http://localhost:4200
+    ```
+## Preview
+<ins>Desktop version</ins>
 
-As you can see, an architecture has already been defined for the project. It is just a suggestion, you can choose to use your own. The predefined architecture includes (in addition to the default angular architecture) the following:
+- Dashboard
 
-- `components` folder: contains every reusable components
-- `pages` folder: contains components used for routing
-- `core` folder: contains the business logic (`services` and `models` folders)
+    ![dashborad](/src/assets/screenshots/dekstop/dashboard-dekstop.png)
 
-I suggest you to start by understanding this starter code. Pay an extra attention to the `app-routing.module.ts` and the `olympic.service.ts`.
+- Details page
 
-Once mastered, you should continue by creating the typescript interfaces inside the `models` folder. As you can see I already created two files corresponding to the data included inside the `olympic.json`. With your interfaces, improve the code by replacing every `any` by the corresponding interface.
+    ![details page](/src/assets/screenshots/dekstop/details-dekstop.png)
 
-You're now ready to implement the requested features.
 
-Good luck!
+<ins>Mobile version</ins>
+
+- Dashboard
+
+    ![dashborad](/src/assets/screenshots/mobile/dashboard-mobile.png)
+
+- Details page
+
+    ![details page](/src/assets/screenshots/mobile/details-mobile.png)
+
+

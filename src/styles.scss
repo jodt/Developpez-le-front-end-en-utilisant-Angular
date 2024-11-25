@@ -1,1 +1,198 @@
-/* You can add global styles to this file, and also import other style files */
+/* =============== IMPORT POLICE ============== */
+
+@import url("https://fonts.googleapis.com/css2?family=Epilogue:wght@300;400;600&family=Montserrat:wght@100;400;600;700;800&display=swap");
+
+
+/* ============= DEFINE VARIABLE ============== */
+
+:root {
+  --blue-color: rgb(29, 129, 141);
+  --label-size: 20px;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.statistics-page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .title {
+    font-size: 30px;
+    border-radius: 5px;
+    padding: 10px 20px;
+    width: fit-content;
+    background-color: var(--blue-color);
+    color: white;
+  }
+
+  .stats-list {
+    display: flex;
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border-radius: 5px;
+      margin: 15px;
+      padding: 10px 20px;
+      width: fit-content;
+      border: solid 2px var(--blue-color);
+
+      .stat-value {
+        font-weight: bold;
+      }
+    }
+  }
+
+  .error-message {
+    color: rgb(178, 0, 0);
+    font-weight: bold;
+    border: 2px solid rgb(178, 0, 0);
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-top: 20px;
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+.icon-link {
+  display: none;
+}
+
+
+/* ================== LOADER ================== */
+
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  color: var(--blue-color);
+  padding: 50px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+
+  .dot {
+    width: 15px;
+    height: 15px;
+    background-color: var(--blue-color);
+    border-radius: 50%;
+    animation: animate 0.3s infinite alternate;
+  }
+
+  .d2 {
+    animation-delay: 0.05s;
+  }
+
+  .d3 {
+    animation-delay: 0.1s;
+  }
+
+  @keyframes animate {
+    0% {
+      opacity: 0;
+    }
+
+    50% {
+      opacity: 0.5;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+}
+
+
+/* ================== CHARTS ================== */
+
+.pie-label {
+  font-size: var(--label-size) !important;
+  color: black;
+  display: var(--label-display);
+}
+
+.pie-label-line {
+  display: var(--label-display);
+}
+
+ngx-tooltip-content.ngx-charts-tooltip-content.type-tooltip {
+  background-color: var(--blue-color) !important;
+  padding: 10px;
+
+  .tooltip-caret.position-top {
+    border-top-color: var(--blue-color);
+  }
+
+  .tooltip-caret.position-right {
+    border-right-color: var(--blue-color);
+  }
+}
+
+
+
+/* ================ RESPONSIVE ================ */
+
+@media (max-width: 768px) {
+
+  :root {
+    --label-size: 12px;
+  }
+
+  .statistics-page {
+    justify-content: space-around;
+
+    .title {
+      font-size: 20px;
+    }
+
+    .stats-list {
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+
+      .stat-item {
+        font-size: 12px;
+        margin: 5px;
+        padding: 5px;
+      }
+    }
+
+    .error-message {
+      font-size: 12px;
+    }
+
+  }
+
+  .loader {
+    font-size: 15px;
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+  }
+
+  .chart {
+    width: 350px;
+  }
+}

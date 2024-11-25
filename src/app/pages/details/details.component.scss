@@ -1,0 +1,36 @@
+.home-link {
+  width: fit-content;
+  color: white;
+  background-color: var(--blue-color);
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 5px;
+
+  .icon-link {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  
+  .home-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-end;
+    width: 20px;
+    height: 20px;
+    color: white;
+    margin-bottom: 5px;
+    background-color: var(--blue-color);
+    border-radius: 50%;
+
+    .icon-link {
+      display: inline;
+    }
+
+    .text-link {
+      display: none;
+    }
+  }
+}

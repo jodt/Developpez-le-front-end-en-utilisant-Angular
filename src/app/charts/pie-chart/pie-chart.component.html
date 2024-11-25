@@ -1,0 +1,12 @@
+<ngx-charts-pie-chart
+  class="chart"
+  [results]="chartData"
+  [labels]="true"
+  [trimLabels]="false"
+  (select)="onSelect($event)"
+>
+  <ng-template #tooltipTemplate class=".custom-tooltip" let-model="model">
+    <div>{{ model.name }}</div>
+    <div>{{ "🏅" + model.value }}</div>
+  </ng-template>
+</ngx-charts-pie-chart>
